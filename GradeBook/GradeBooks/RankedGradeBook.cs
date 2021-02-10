@@ -19,6 +19,9 @@ namespace GradeBook.GradeBooks
             {
                 throw new InvalidOperationException();
             }
+            // erste 20% der Studenten bekommen ein A
+            int StudentsPerGrade = Students.Count / 5;
+
 
                  double[] noten = new double[Students.Count];
             int index = 0;
@@ -27,14 +30,16 @@ namespace GradeBook.GradeBooks
                 noten[index] = Student.AverageGrade;
                 index++;
                    }
-            noten.sort
-            if (normalized >= 80)
+            Array.Sort(noten);
+
+            Console.WriteLine(StudentsPerGrade);
+            if (averageGrade > noten[StudentsPerGrade])
                 return 'A';
-            else if (normalized >= 60)
+            else if (averageGrade == 75)
                 return 'B';
-            else if (normalized >= 40)
+            else if (averageGrade > noten[StudentsPerGrade*3])
                 return 'C';
-            else if (normalized >= 20)
+            else if (averageGrade > noten[StudentsPerGrade*4])
                 return 'D';
             else
                 return 'F';
