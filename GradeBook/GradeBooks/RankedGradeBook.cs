@@ -10,27 +10,31 @@ namespace GradeBook.GradeBooks
         {
             Type = Enums.GradeBookType.Ranked;
         }
+      
+        
         public override char GetLetterGrade(double averageGrade)
         {
+
                 if(Students.Count < 5)
             {
                 throw new InvalidOperationException();
             }
 
-                double max = 0.0;
-            double normalized = 0.0;
-                foreach (var student in Students)
-                   {
-                max += student.AverageGrade;
+                 double[] noten = new double[Students.Count];
+            int index = 0;
+            foreach (var Student in Students)
+                {
+                noten[index] = Student.AverageGrade;
+                index++;
                    }
-            normalized = 100 / max * averageGrade;
-            if (normalized >= 90)
+            noten.sort
+            if (normalized >= 80)
                 return 'A';
-            else if (normalized >= 80)
-                return 'B';
-            else if (normalized >= 70)
-                return 'C';
             else if (normalized >= 60)
+                return 'B';
+            else if (normalized >= 40)
+                return 'C';
+            else if (normalized >= 20)
                 return 'D';
             else
                 return 'F';
